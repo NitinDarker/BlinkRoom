@@ -36,6 +36,7 @@ wss.on("connection", (socket) => {
 
       const newUser: User = { socket, room: roomId, username };
       allSocket.push(newUser);
+      
       rooms.set(roomId, { users: [newUser] });
 
       socket.send(
@@ -59,6 +60,16 @@ wss.on("connection", (socket) => {
           JSON.stringify({
             type: "error",
             payload: { message: "Room does not exist" },
+          })
+        );
+        return;
+      }
+
+      if (rooms.get(roomId)!.users.some((u) => u.username === username)) {
+        socket.send(
+          JSON.stringify({
+            type: "error",
+            payload: { message: "username taken" },
           })
         );
         return;
@@ -153,3 +164,4 @@ wss.on("connection", (socket) => {
     }
   });
 });
+
