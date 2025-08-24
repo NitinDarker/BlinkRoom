@@ -3,7 +3,9 @@
   "version": "1.0.1",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc -b && node ./dist/index.js"
+    "build": "tsc -b",
+    "start": "node ./dist/index.js",
+    "dev": "npx tsc -b && node ./dist/index.js"
   },
   "keywords": [],
   "author": "Nitin Sharma",
@@ -12,9 +14,11 @@
   "description": "",
   "dependencies": {
     "@types/ws": "^8.18.1",
+    "typescript": "^5.9.2",
     "ws": "^8.18.2"
   },
-  "devDependencies": {
-    "typescript": "^5.9.2"
+  "engines": {
+    "node": ">=18.x"
   }
 }
+
