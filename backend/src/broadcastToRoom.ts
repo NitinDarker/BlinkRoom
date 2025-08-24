@@ -9,9 +9,9 @@ export default function broadcastToRoom(
   excludeSocket?: WebSocket
 ) {
   let sentCount = 0;
-  allSocket.forEach((u: User, i: number) => {
+  allSocket.forEach((u: User) => {
     if (u.room === room && (!excludeSocket || u.socket !== excludeSocket)) {
-      console.log(`📤 Sending to user #${i} in room ${room}`);
+      // console.log(`📤 Sending to user #${i} in room ${room}`);
       u.socket.send(JSON.stringify(message));
       sentCount++;
     }

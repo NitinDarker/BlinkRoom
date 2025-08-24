@@ -36,7 +36,7 @@ wss.on("connection", (socket) => {
 
       const newUser: User = { socket, room: roomId, username };
       allSocket.push(newUser);
-      
+
       rooms.set(roomId, { users: [newUser] });
 
       socket.send(
@@ -104,15 +104,15 @@ wss.on("connection", (socket) => {
       // Get the room and username of this socket
       const currentUser = allSocket.find((u) => u.socket === socket);
       if (!currentUser) {
-        console.warn("⚠️ User not found in socket list");
-        console.log(
-          "🔍 Current socket list:",
-          allSocket.map((u) => ({
-            room: u.room,
-            username: u.username,
-            socketId: u.socket.readyState,
-          }))
-        );
+        console.log("⚠️ User not found in socket list");
+        // console.log(
+        //   "🔍 Current socket list:",
+        //   allSocket.map((u) => ({
+        //     room: u.room,
+        //     username: u.username,
+        //     socketId: u.socket.readyState,
+        //   }))
+        // );
         logRoomStatus(allSocket);
         return;
       }
@@ -131,7 +131,7 @@ wss.on("connection", (socket) => {
             author,
           },
         },
-        allSocket
+        allSocket,
       );
     }
   });
