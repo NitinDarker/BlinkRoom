@@ -1,0 +1,29 @@
+@font-face {
+    font-family: Doto;
+    src: url(./assets//fonts/Doto-Regular.ttf);
+}
+
+@font-face {
+    font-family: Grotesque;
+    src: url(./assets//fonts/DarkerGrotesque-Regular.ttf);
+}
+
+@font-face {
+    font-family: Rubik;
+    src: url(./assets//fonts/Rubik-Regular.ttf);
+}
+
+@font-face {
+    font-family: Orbitron;
+    src: url(./assets//fonts/Orbitron-Bold.ttf);
+    font-weight: 900;
+    font-style: normal;
+}
+
+@import "tailwindcss";
+@theme{
+    --font-doto: Doto, sans-serif;
+    --font-rubik: Rubik, sans-serif;
+    --font-grotesque: Grotesque, sans-serif
+    --font-orbitron: Orbitron, sans-serif
+}
