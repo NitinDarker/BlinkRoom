@@ -4,7 +4,7 @@ let roomId: string | null = null;
 let username: string | null = null;
 let isConnecting = false;
 
-const serverUrl: string = "ws://localhost:8080";
+const serverUrl: string = "wss://blinkroom.onrender.com";
 
 export function setUsername(name: string) {
   username = name;
@@ -150,6 +150,4 @@ export function disconnect() {
     isConnecting = false;
   }
 }
-
-
 

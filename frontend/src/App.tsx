@@ -1,7 +1,7 @@
 import Dashboard from './pages/Dashboard'
 import Signup from './pages/Signup'
 import Landing from './pages/Landing'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 const App = () => {
   return (
@@ -11,6 +11,8 @@ const App = () => {
           <Route path='/' element={<Landing />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/dashboard' element={<Dashboard />} />
+           {/* This is the catch-all route */}
+          <Route path='*' element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
     </div>
