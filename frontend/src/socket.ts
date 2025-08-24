@@ -2,7 +2,6 @@ import toast from "react-hot-toast";
 let socket: WebSocket | null = null;
 let roomId: string | null = null;
 let username: string | null = null;
-let isConnecting = false;
 
 const serverUrl: string = "wss://blinkroom.onrender.com";
 
@@ -21,12 +20,10 @@ export function joinSocket(joinedRoomId: string, user: string, navigate: any) {
     socket.close();
   }
 
-  isConnecting = true;
   socket = new WebSocket(serverUrl);
 
   socket.onopen = () => {
     console.log("✅ Socket connected");
-    isConnecting = false;
 
     // Send join message immediately after connection
     socket?.send(
@@ -62,12 +59,10 @@ export function joinSocket(joinedRoomId: string, user: string, navigate: any) {
 
   socket.onclose = () => {
     console.log("🔌 Socket closed");
-    isConnecting = false;
   };
 
   socket.onerror = (error) => {
     console.error("❌ Socket error:", error);
-    isConnecting = false;
   };
 }
 
@@ -82,12 +77,10 @@ export function createSocket(
     socket.close();
   }
 
-  isConnecting = true;
   socket = new WebSocket(serverUrl);
 
   socket.onopen = () => {
     console.log("✅ Socket connected");
-    isConnecting = false;
 
     // Send create message immediately after connection
     socket?.send(
@@ -123,12 +116,10 @@ export function createSocket(
 
   socket.onclose = () => {
     console.log("🔌 Socket closed");
-    isConnecting = false;
   };
 
   socket.onerror = (error) => {
     console.error("❌ Socket error:", error);
-    isConnecting = false;
   };
 }
 
@@ -147,7 +138,6 @@ export function disconnect() {
     socket = null;
     roomId = null;
     username = null;
-    isConnecting = false;
   }
 }
 
