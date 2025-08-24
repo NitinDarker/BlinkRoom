@@ -1,5 +1,5 @@
 import type { WebSocket } from "ws";
-import { User } from "./UserType";
+import { User } from "./UserType.js";
 
 // Helper function to broadcast to room
 export default function broadcastToRoom(

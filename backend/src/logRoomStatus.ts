@@ -1,4 +1,4 @@
-import { User } from "./UserType";
+import { User } from "./UserType.js";
 
 // Helper function to log room status
 export default function logRoomStatus(allSocket: User[]) {

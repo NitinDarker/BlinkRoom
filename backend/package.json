@@ -13,14 +13,13 @@
   "type": "module",
   "description": "",
   "dependencies": {
-    "ws": "^8.18.2"
-  },
-  "engines": {
-    "node": ">=18.x"
-  },
-  "devDependencies": {
+    "ws": "^8.18.2",
     "@types/node": "^24.3.0",
     "@types/ws": "^8.18.1",
     "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=18.x"
   }
 }
+

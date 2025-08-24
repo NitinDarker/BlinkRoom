@@ -1,7 +1,7 @@
 import { WebSocketServer } from "ws";
-import { User } from "./UserType";
-import logRoomStatus from "./logRoomStatus";
-import broadcastToRoom from "./broadcastToRoom";
+import { User } from "./UserType.js";
+import logRoomStatus from "./logRoomStatus.js";
+import broadcastToRoom from "./broadcastToRoom.js";
 
 const PORT = Number(process.env.PORT) || 8080;
 const wss = new WebSocketServer({ port: PORT });
