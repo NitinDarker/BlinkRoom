@@ -12,73 +12,75 @@ const Landing = () => {
   }
 
   return (
-    <div className='min-h-screen bg-black flex items-center justify-center px-4 relative'>
+    <div className='relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-4'>
+      <div
+        className='absolute inset-0 h-full w-full 
+        [background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)] 
+        [background-size:20px_20px]'
+      />
+      <div
+        className='pointer-events-none absolute inset-0 flex items-center justify-center bg-black 
+        [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'
+      ></div>
+
       <div>
         {/* Background decorative elements - subtle green glow */}
-        <div className='absolute top-1/4 left-1/4 w-32 h-32 bg-green-500 rounded-full opacity-5 blur-3xl animate-pulse'></div>
-        <div className='absolute bottom-1/4 right-1/4 w-40 h-40 bg-green-600 rounded-full opacity-5 blur-3xl animate-pulse delay-1000'></div>
-        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-green-400 rounded-full opacity-5 blur-2xl animate-pulse delay-500'></div>
+        <div className='absolute left-1/4 top-1/4 h-32 w-32 animate-pulse rounded-full bg-green-600 opacity-5 blur-3xl'></div>
+        <div className='absolute bottom-1/4 right-1/4 h-40 w-40 animate-pulse rounded-full bg-green-900 opacity-5 delay-1000 blur-3xl'></div>
+        <div className='absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-green-400 opacity-5 delay-600 blur-2xl'></div>
 
-        <div className='text-center max-w-5xl mx-auto relative z-10'>
+        <div className='relative z-10 mx-auto max-w-5xl text-center'>
           {/* Main Heading */}
-          <h1 className='text-5xl md:text-7xl font-bold mb-6 font-orbitron'>
-            <span className='text-zinc-300 drop-shadow-[0_0_10px_rgba(212,212,212,0.3)]'>
-              Real-Time Rooms
+          <h1 className='font-orbitron mb-6 text-5xl font-bold md:text-7xl'>
+            <span className='text-8xl text-green-400 drop-shadow-[0_0_20px_rgba(74,222,128,0.5)]'>
+              Create your space
             </span>
             <br />
-            <span className='text-green-400 text-7xl drop-shadow-[0_0_15px_rgba(74,222,128,0.4)]'>
-              Just Join In
-            </span>
+            <span className='text-7xl text-zinc-300'>In a Blink</span>
           </h1>
-
           {/* Subheading */}
-          <p className='text-xl md:text-2xl text-zinc-400 mb-8 max-w-3xl mx-auto leading-relaxed font-doto'>
-            Create or join a chat room instantly and start messaging — powered
-            by WebSockets.
+          <p className='font-rubik mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-zinc-500 md:text-2xl'>
+            Create or Join a chat room instantly and start messaging
+            <br />
+            Powered by WebSockets.
           </p>
-
-          {/* Feature Indicators */}
-          <div className='flex justify-center items-center gap-6 mb-12 text-sm md:text-base cursor-default'>
-            <span className='text-zinc-300 font-medium hover:text-green-400 transition-all font-doto hover:scale-105'>
-              Secure
+          {/* Feature Indicators */}         
+          <div className='mb-12 flex cursor-default items-center justify-center gap-6 text-sm md:text-base'>
+            <span className='font-doto font-medium text-zinc-300 transition-all hover:scale-105 hover:text-green-400'>
+              Connect
             </span>
-            <div className='w-1 h-1 bg-zinc-500 rounded-full'></div>
-            <span className='text-zinc-300 font-medium hover:text-green-400 transition-all font-doto hover:scale-105'>
-              Fast
+            <div className='h-1 w-1 rounded-full bg-zinc-500'></div>           
+            <span className='font-doto font-medium text-zinc-300 transition-all hover:scale-105 hover:text-green-400'>
+              Collaborate            
             </span>
-            <div className='w-1 h-1 bg-zinc-500 rounded-full'></div>
-            <span className='text-zinc-300 font-medium hover:text-green-400 transition-all font-doto hover:scale-105'>
-              Real-time
+            <div className='h-1 w-1 rounded-full bg-zinc-500'></div>         
+            <span className='font-doto font-medium text-zinc-300 transition-all hover:scale-105 hover:text-green-400'>
+              Disappear            
             </span>
           </div>
-
-          {/* Buttons */}
-          <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+          {/* Buttons */}         
+          <div className='flex flex-col items-center justify-center gap-4 sm:flex-row'>
+               
             <button
               onClick={handleGetStarted}
-              className='px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(74,222,128,0.3)] hover:shadow-[0_0_30px_rgba(74,222,128,0.5)] font-rubik cursor-pointer'
+              className='font-rubik transform cursor-pointer rounded-lg bg-green-500 px-8 py-4 font-semibold text-white shadow-[0_0_20px_rgba(74,222,128,0.3)] transition-all duration-300 hover:scale-105 hover:bg-green-600 hover:shadow-[0_0_30px_rgba(74,222,128,0.5)] focus:outline-none'
             >
               Get Started
             </button>
+             
+            {/* <button className='p-[3px] relative'>
+              <div className='absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg' />
+              <div className='px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent'>
+                In progress..
+              </div>
+            </button> */}
             <button
               onClick={handleMoreInfo}
-              className='px-8 py-4 border-2 border-zinc-600 hover:border-green-400 text-zinc-300 hover:text-green-400 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 font-rubik cursor-pointer'
+              className='font-rubik transform cursor-pointer rounded-lg border-2 border-zinc-600 px-8 py-4 font-semibold text-zinc-300 transition-all duration-300 hover:scale-105 hover:border-green-400 hover:text-green-400 focus:outline-none'
             >
               Learn More
             </button>
           </div>
-
-          {/* Additional decorative elements */}
-          <div className='mt-16 opacity-30'>
-            <div className='flex justify-center space-x-2'>
-              <div className='w-2 h-2 bg-green-400 rounded-full animate-bounce'></div>
-              <div className='w-2 h-2 bg-green-400 rounded-full animate-bounce delay-100'></div>
-              <div className='w-2 h-2 bg-green-400 rounded-full animate-bounce delay-200'></div>
-            </div>
-          </div>
-          <h1 className='text-zinc-500 pt-10 font-doto'>
-            Made with love by Nitin
-          </h1>
         </div>
       </div>
     </div>
