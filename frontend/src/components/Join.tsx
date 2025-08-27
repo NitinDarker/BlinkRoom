@@ -49,7 +49,7 @@ const Join = () => {
       />
       <button
         type='submit'
-        className='p-1 px-4 border border-zinc-300 rounded-md text-zinc-300 font-doto cursor-pointer hover:bg-zinc-800 hover:scale-105 transition-all focus:outline-none'
+        className='p-1 px-4 border border-zinc-400 rounded-md text-zinc-400 font-doto cursor-pointer transition-all duration-300 hover:border-green-400 hover:text-green-400 hover:scale-105 hover:shadow-[0_0_15px_rgba(74,222,128,0.4)] focus:outline-none focus:border-green-400 focus:text-green-400 focus:shadow-[0_0_15px_rgba(74,222,128,0.4)]'
       >
         Join
       </button>

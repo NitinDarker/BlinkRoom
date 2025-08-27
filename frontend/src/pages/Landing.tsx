@@ -13,6 +13,7 @@ const Landing = () => {
 
   return (
     <div className='relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-4'>
+      {/* Grid Background */}
       <div
         className='absolute inset-0 h-full w-full 
         [background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)] 
