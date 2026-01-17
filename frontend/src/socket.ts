@@ -23,7 +23,7 @@ export function joinSocket(joinedRoomId: string, user: string, navigate: any, on
   socket = new WebSocket(serverUrl);
 
   socket.onopen = () => {
-    console.log("✅ Socket connected");
+    console.log("[socket] Connected");
 
     // Send join message immediately after connection
     socket?.send(
@@ -41,7 +41,7 @@ export function joinSocket(joinedRoomId: string, user: string, navigate: any, on
 
     // Server confirms join
     if (data.type === "server") {
-      console.log("🤖 Server responded:", data.payload.message);
+      console.log("[server] Response:", data.payload.message);
       roomId = joinedRoomId;
       username = user;
       navigate("/dashboard");
@@ -49,7 +49,7 @@ export function joinSocket(joinedRoomId: string, user: string, navigate: any, on
 
     // Server error
     if (data.type === "error") {
-      console.log("❌ Server error:", data.payload.message);
+      console.log("[error] Server:", data.payload.message);
       socket?.close();
       socket = null;
       toast.error(data.payload.message);
@@ -59,11 +59,11 @@ export function joinSocket(joinedRoomId: string, user: string, navigate: any, on
   };
 
   socket.onclose = () => {
-    console.log("🔌 Socket closed");
+    console.log("[socket] Closed");
   };
 
   socket.onerror = (error) => {
-    console.error("❌ Socket error:", error);
+    console.error("[error] Socket:", error);
     onError?.();
   };
 }
@@ -83,7 +83,7 @@ export function createSocket(
   socket = new WebSocket(serverUrl);
 
   socket.onopen = () => {
-    console.log("✅ Socket connected");
+    console.log("[socket] Connected");
 
     // Send create message immediately after connection
     socket?.send(
@@ -101,7 +101,7 @@ export function createSocket(
 
     // Server confirms create
     if (data.type === "server") {
-      console.log("🤖 Server responded:", data.payload.message);
+      console.log("[server] Response:", data.payload.message);
       roomId = joinedRoomId;
       username = user;
       navigate("/dashboard");
@@ -109,7 +109,7 @@ export function createSocket(
 
     // Server error
     if (data.type === "error") {
-      console.log("❌ Server error:", data.payload.message);
+      console.log("[error] Server:", data.payload.message);
       socket?.close();
       socket = null;
       toast.error(data.payload.message);
@@ -119,11 +119,11 @@ export function createSocket(
   };
 
   socket.onclose = () => {
-    console.log("🔌 Socket closed");
+    console.log("[socket] Closed");
   };
 
   socket.onerror = (error) => {
-    console.error("❌ Socket error:", error);
+    console.error("[error] Socket:", error);
     onError?.();
   };
 }
@@ -138,7 +138,7 @@ export function getRoomId() {
 
 export function disconnect() {
   if (socket) {
-    console.log("🔌 Disconnecting socket");
+    console.log("[socket] Disconnecting");
     socket.close();
     socket = null;
     roomId = null;

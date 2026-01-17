@@ -6,6 +6,6 @@ export default function logRoomStatus(allSocket: User[]) {
   allSocket.forEach((user) => {
     roomCounts[user.room] = (roomCounts[user.room] || 0) + 1;
   });
-  console.log("📊 Room status:", roomCounts);
-  console.log("👥 Total connected users:", allSocket.length);
+  console.log("[status] Rooms:", roomCounts);
+  console.log("[status] Total connected users:", allSocket.length);
 }

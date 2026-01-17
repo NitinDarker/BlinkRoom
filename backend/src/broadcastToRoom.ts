@@ -11,10 +11,9 @@ export default function broadcastToRoom(
   let sentCount = 0;
   allSocket.forEach((u: User) => {
     if (u.room === room && (!excludeSocket || u.socket !== excludeSocket)) {
-      // console.log(`📤 Sending to user #${i} in room ${room}`);
       u.socket.send(JSON.stringify(message));
       sentCount++;
     }
   });
-  console.log(`📤 Sent message to ${sentCount} users in room ${room}`);
+  console.log(`[broadcast] Sent message to ${sentCount} users in room ${room}`);
 }

@@ -10,18 +10,18 @@ const allSocket: User[] = [];
 const rooms = new Map<string, { users: User[] }>();
 
 wss.on("connection", (socket) => {
-  console.log("🟢 New client connected");
+  console.log("[connect] New client connected");
 
   socket.on("message", (e) => {
     let parsedMessage;
     try {
       parsedMessage = JSON.parse(e.toString());
     } catch (err) {
-      console.log("❌ Invalid JSON received");
+      console.log("[error] Invalid JSON received");
       return;
     }
     console.log(
-      "📨 Received message:",
+      "[message] Received:",
       parsedMessage.type,
       parsedMessage.payload
     );
@@ -110,24 +110,16 @@ wss.on("connection", (socket) => {
       // Get the room and username of this socket
       const currentUser = allSocket.find((u) => u.socket === socket);
       if (!currentUser) {
-        console.log("⚠️ User not found in socket list");
-        // console.log(
-        //   "🔍 Current socket list:",
-        //   allSocket.map((u) => ({
-        //     room: u.room,
-        //     username: u.username,
-        //     socketId: u.socket.readyState,
-        //   }))
-        // );
+        console.log("[warn] User not found in socket list");
         logRoomStatus(allSocket);
         return;
       }
 
       const room = currentUser.room;
       const author = currentUser.username;
-      console.log("🏠 Broadcasting to room:", room, "from", author);
+      console.log("[broadcast] Room:", room, "from", author);
 
-      // ✅ Broadcast to everyone in the same room
+      // Broadcast to everyone in the same room
       broadcastToRoom(
         room,
         {
@@ -143,11 +135,11 @@ wss.on("connection", (socket) => {
   });
 
   socket.on("close", () => {
-    console.log("🔴 Socket disconnected");
+    console.log("[disconnect] Socket disconnected");
     const index = allSocket.findIndex((u) => u.socket === socket);
     if (index !== -1) {
       const user = allSocket[index];
-      console.log(`➖ Removed user from room: ${user.room} (${user.username})`);
+      console.log(`[leave] Removed user from room: ${user.room} (${user.username})`);
 
       // Remove from room map
       const room = rooms.get(user.room);

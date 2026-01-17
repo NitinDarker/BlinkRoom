@@ -1,46 +1,29 @@
-# 💬 EchoRoom – Real-Time Room-Based Chat App
+# EchoRoom
 
-**EchoRoom** is a lightweight, real-time chat application that allows users to instantly communicate in dedicated rooms — no login or registration required. Built with **Node.js**, **WebSocket**, and **React**, EchoRoom delivers fast and seamless messaging with a minimalistic interface.
+A real-time room-based chat application built with WebSockets. No authentication required - just create or join a room and start chatting.
 
----
+**Live Demo:** https://blink-room.vercel.app/
 
-## 🚀 Live Preview
+## Tech Stack
 
-> 🎯 _Demo coming soon (GIF in progress)_
+- **Frontend:** React, TypeScript, Tailwind CSS, Vite
+- **Backend:** Node.js, WebSocket (ws)
+- **Deployment:** Vercel (frontend), Render (backend)
 
----
+## Run Locally
 
-## 🖼️ Screenshots
+```bash
+# Backend
+cd backend
+npm install
+npm run dev
 
-![Chat Interface](chat.png)
-![Rooms](main.png)
-![User Experience](create.png)
+# Frontend
+cd frontend
+npm install
+npm run dev
+```
 
----
+## Author
 
-## 🧠 Key Features
-
-✅ **Real-Time Messaging** – Built using native WebSocket for ultra-fast communication  
-✅ **Room-Based Chats** – Join or create any room instantly  
-✅ **Zero Authentication** – Start chatting without signing up  
-✅ **Minimal Backend** – Powered by pure Node.js & WebSocket  
-✅ **React Frontend** – Sleek UI with seamless user experience  
-✅ **Auto-Broadcasting** – Messages are instantly broadcasted to all users in the same room
-
----
-
-## 📚 What I Learned
-
-- Built a **WebSocket server from scratch** without using Express or HTTP routing  
-- Managed **room-based user grouping and message broadcasting** logic  
-- Handled key WebSocket events like **connection**, **disconnection**, and **message transmission**  
-- Integrated a **React frontend** directly with a raw WebSocket backend  
-- Gained deeper understanding of **real-time architecture** and how to **deploy WebSocket-based apps**
-
----
-
-## 🧑‍💻 Author
-
-Made with ❤️ by **Sanskar Shukla**  
-📧 [Gmail](mailto:sanskar0627@gmail.com)
-
+Nitin Sharma

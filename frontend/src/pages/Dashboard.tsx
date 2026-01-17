@@ -27,28 +27,28 @@ function Dashboard () {
 
   useEffect(() => {
     if (!socket) {
-      console.log('❌ No socket available')
+      console.log('[error] No socket available')
       navigate('/')
       return
     }
 
     const handleOpen = () => {
-      console.log('✅ WebSocket is OPEN')
+      console.log('[socket] WebSocket is open')
       setIsConnected(true)
     }
 
     const handleClose = () => {
-      console.log('🛑 WebSocket CLOSED')
+      console.log('[socket] WebSocket closed')
       setIsConnected(false)
     }
 
     const handleError = (err: Event) => {
-      console.log('❌ WebSocket ERROR', err)
+      console.log('[error] WebSocket error', err)
       setIsConnected(false)
     }
 
     const handleMessage = (event: MessageEvent) => {
-      // console.log('📨 Received message:', event.data)
+      // console.log('[message] Received:', event.data)
       const data = JSON.parse(event.data)
       if (data.type === 'chat') {
         setMessages(prev => [
@@ -60,7 +60,7 @@ function Dashboard () {
           }
         ])
       } else if (data.type === 'server') {
-        // console.log('ℹ️ Server message:', data.payload.message)
+        // console.log('[server] Message:', data.payload.message)
         setMessages(prev => [
           ...prev,
           {
@@ -91,18 +91,18 @@ function Dashboard () {
 
   const handleSend = (msg: string) => {
     if (!socket || socket.readyState !== WebSocket.OPEN) {
-      console.log('❌ Socket not ready for sending')
+      console.log('[error] Socket not ready for sending')
       return
     }
     if (!isConnected) {
-      console.log('❌ Socket not connected')
+      console.log('[error] Socket not connected')
       return
     }
     if (!username) {
-      console.log('❌ No username set')
+      console.log('[error] No username set')
       return
     }
-    console.log('📤 Sending message:', msg)
+    console.log('[send] Message:', msg)
     socket.send(
       JSON.stringify({
         type: 'chat',
@@ -122,7 +122,7 @@ function Dashboard () {
             <Header RoomId={roomId} />
             {!isConnected && (
               <div className='text-red-400 text-sm font-doto mb-2'>
-                ⚠️ Connecting to server...
+                Connecting to server...
               </div>
             )}
           </div>
