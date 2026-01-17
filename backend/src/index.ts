@@ -13,7 +13,13 @@ wss.on("connection", (socket) => {
   console.log("🟢 New client connected");
 
   socket.on("message", (e) => {
-    const parsedMessage = JSON.parse(e.toString());
+    let parsedMessage;
+    try {
+      parsedMessage = JSON.parse(e.toString());
+    } catch (err) {
+      console.log("❌ Invalid JSON received");
+      return;
+    }
     console.log(
       "📨 Received message:",
       parsedMessage.type,

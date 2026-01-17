@@ -1,9 +1,15 @@
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { joinSocket, setUsername as setGlobalUsername } from '../socket'
 import { useNavigate } from 'react-router'
+import Spinner from './Spinner'
 
-const Join = () => {
+interface JoinProps {
+  isLoading: boolean
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Join = ({ isLoading, setIsLoading }: JoinProps) => {
   const navigate = useNavigate()
   const usernameRef = useRef<HTMLInputElement>(null)
   const [roomId, setRoomId] = useState('')
@@ -12,8 +18,9 @@ const Join = () => {
   const handleJoin = () => {
     if (!roomId) return toast.error('Room ID is required')
     if (!username) return toast.error('Username is required')
+    setIsLoading(true)
     setGlobalUsername(username)
-    joinSocket(roomId, username, navigate)
+    joinSocket(roomId, username, navigate, () => setIsLoading(false))
   }
 
   return (
@@ -30,6 +37,7 @@ const Join = () => {
         type='text'
         placeholder='RoomId'
         value={roomId}
+        disabled={isLoading}
         onChange={e => setRoomId(e.target.value)}
         onKeyDown={e => {
           if (e.key === 'Enter') {
@@ -44,14 +52,16 @@ const Join = () => {
         ref={usernameRef}
         placeholder='Username'
         value={username}
+        disabled={isLoading}
         onChange={e => setUsername(e.target.value)}
         className='p-2 border border-zinc-300 rounded-md font-rubik text-zinc-300 max-w-[70%] placeholder:font-doto focus:outline-none'
       />
       <button
         type='submit'
+        disabled={isLoading}
         className='p-1 px-4 border border-zinc-400 rounded-md text-zinc-400 font-doto cursor-pointer transition-all duration-300 hover:border-green-400 hover:text-green-400 hover:scale-105 hover:shadow-[0_0_15px_rgba(74,222,128,0.4)] focus:outline-none focus:border-green-400 focus:text-green-400 focus:shadow-[0_0_15px_rgba(74,222,128,0.4)]'
       >
-        Join
+        {isLoading ? <Spinner /> : 'Join'}
       </button>
     </form>
   )

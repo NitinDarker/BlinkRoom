@@ -2,9 +2,11 @@ import { useNavigate } from 'react-router-dom'
 import CloseIcon from '../assets/close'
 import Create from '../components/Create'
 import Join from '../components/Join'
+import { useState } from 'react'
 
 function Signup () {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleClose = () => {
     navigate('/')
@@ -29,7 +31,7 @@ function Signup () {
 
           {/* Join section */}
           <div className='flex w-full flex-col items-center justify-center'>
-            <Join />
+            <Join isLoading={isLoading} setIsLoading={setIsLoading}/>
           </div>
 
           {/* Divider */}
@@ -37,7 +39,7 @@ function Signup () {
 
           {/* Create section */}
           <div className='flex w-full flex-col items-center justify-center'>
-            <Create />
+            <Create isLoading={isLoading} setIsLoading={setIsLoading}/>
           </div>
         </div>
       </div>

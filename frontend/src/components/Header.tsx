@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { disconnect } from '../socket'
 
-const Header = ({ RoomId }: { RoomId: String | null }) => {
+const Header = ({ RoomId }: { RoomId: string | null }) => {
   const navigate = useNavigate()
 
   const handleExit = () => {

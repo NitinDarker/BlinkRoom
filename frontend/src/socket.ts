@@ -13,7 +13,7 @@ export function getUsername() {
   return username;
 }
 
-export function joinSocket(joinedRoomId: string, user: string, navigate: any) {
+export function joinSocket(joinedRoomId: string, user: string, navigate: any, onError?: () => void) {
   // Always create a new socket for each tab/instance
   // This ensures each tab has its own connection
   if (socket) {
@@ -53,6 +53,7 @@ export function joinSocket(joinedRoomId: string, user: string, navigate: any) {
       socket?.close();
       socket = null;
       toast.error(data.payload.message);
+      onError?.();
       return;
     }
   };
@@ -63,13 +64,15 @@ export function joinSocket(joinedRoomId: string, user: string, navigate: any) {
 
   socket.onerror = (error) => {
     console.error("❌ Socket error:", error);
+    onError?.();
   };
 }
 
 export function createSocket(
   joinedRoomId: string,
   user: string,
-  navigate: any
+  navigate: any,
+  onError?: () => void
 ) {
   // Always create a new socket for each tab/instance
   // This ensures each tab has its own connection
@@ -110,6 +113,7 @@ export function createSocket(
       socket?.close();
       socket = null;
       toast.error(data.payload.message);
+      onError?.();
       return;
     }
   };
@@ -120,6 +124,7 @@ export function createSocket(
 
   socket.onerror = (error) => {
     console.error("❌ Socket error:", error);
+    onError?.();
   };
 }
 
