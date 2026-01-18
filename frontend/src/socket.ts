@@ -3,7 +3,7 @@ let socket: WebSocket | null = null;
 let roomId: string | null = null;
 let username: string | null = null;
 
-const serverUrl: string = "wss://blinkroom.onrender.com";
+const serverUrl: string = import.meta.env.VITE_WS_URL || "ws://localhost:8080";
 
 export function getUsername() {
   return username;

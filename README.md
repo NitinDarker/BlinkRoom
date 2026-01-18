@@ -36,11 +36,10 @@ npm run dev
 **Frontend** (in a new terminal)
 ```bash
 cd frontend
+cp .env.example .env
 npm install
 npm run dev
 ```
-
-> Note: Update the WebSocket URL in `frontend/src/socket.ts` to `ws://localhost:8080` for local development.
 
 ## Author
 
