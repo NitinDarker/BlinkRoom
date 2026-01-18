@@ -87,7 +87,7 @@ function Dashboard () {
       socket.removeEventListener('error', handleError)
       socket.removeEventListener('message', handleMessage)
     }
-  }, [socket])
+  }, [socket, navigate])
 
   const handleSend = (msg: string) => {
     if (!socket || socket.readyState !== WebSocket.OPEN) {
@@ -107,8 +107,7 @@ function Dashboard () {
       JSON.stringify({
         type: 'chat',
         payload: {
-          message: msg,
-          author: username
+          message: msg
         }
       })
     )

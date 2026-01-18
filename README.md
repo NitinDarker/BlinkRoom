@@ -1,4 +1,4 @@
-# EchoRoom
+# BlinkRoom
 
 A real-time room-based chat application built with WebSockets. No authentication required - just create or join a room and start chatting.
 
@@ -13,6 +13,9 @@ A real-time room-based chat application built with WebSockets. No authentication
 ## Run Locally
 
 ```bash
+git clone https://github.com/NitinDarker/BlinkRoom.git
+cd BlinkRoom
+
 # Backend
 cd backend
 npm install

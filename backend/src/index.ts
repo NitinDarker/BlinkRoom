@@ -148,6 +148,8 @@ wss.on("connection", (socket) => {
         if (room.users.length === 0) rooms.delete(user.room); // delete empty rooms
       }
 
+      allSocket.splice(index, 1); // Remove user from list first
+
       // Notify others in the room that someone left
       broadcastToRoom(
         user.room,
@@ -157,7 +159,6 @@ wss.on("connection", (socket) => {
         },
         allSocket
       );
-      allSocket.splice(index, 1); // Remove user from list
       logRoomStatus(allSocket);
     }
   });
