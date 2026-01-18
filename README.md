@@ -15,17 +15,22 @@ A real-time room-based chat application built with WebSockets. No authentication
 ```bash
 git clone https://github.com/NitinDarker/BlinkRoom.git
 cd BlinkRoom
-
-# Backend
-cd backend
-npm install
-npm run dev
-
-# Frontend
-cd frontend
-npm install
-npm run dev
 ```
+
+- Backend
+    ```bash
+    cd backend
+    npm install
+    npm run dev
+    ```
+
+- Frontend
+    ```bash
+    # Frontend
+    cd frontend
+    npm install
+    npm run dev
+    ```
 
 ## Author
 

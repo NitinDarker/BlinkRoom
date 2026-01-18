@@ -1,25 +1,20 @@
-import React, { useRef, useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast'
-import { createSocket, setUsername as setGlobalUsername } from '../socket'
-import { useNavigate } from 'react-router'
+import { useRef, useState } from 'react'
+import toast from 'react-hot-toast'
+import { createSocket } from '../socket'
+import { useNavigate } from 'react-router-dom'
 import Spinner from './Spinner'
 
-interface CreateProps {
-  isLoading: boolean
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const Create = ({ isLoading, setIsLoading }: CreateProps) => {
+const Create = () => {
   const navigate = useNavigate()
   const usernameRef = useRef<HTMLInputElement>(null)
   const [roomId, setRoomId] = useState('')
   const [username, setUsername] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleCreate = () => {
     if (!roomId) return toast.error('Room ID is required')
     if (!username) return toast.error('Username is required')
     setIsLoading(true)
-    setGlobalUsername(username)
     createSocket(roomId, username, navigate, () => setIsLoading(false))
   }
 
@@ -31,7 +26,6 @@ const Create = ({ isLoading, setIsLoading }: CreateProps) => {
         handleCreate()
       }}
     >
-      <Toaster />
       <h1 className='font-doto text-zinc-300 text-3xl'>Create a Room</h1>
       <input
         type='text'

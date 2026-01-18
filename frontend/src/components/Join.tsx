@@ -1,25 +1,20 @@
-import React, { useRef, useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast'
-import { joinSocket, setUsername as setGlobalUsername } from '../socket'
-import { useNavigate } from 'react-router'
+import { useRef, useState } from 'react'
+import toast from 'react-hot-toast'
+import { joinSocket } from '../socket'
+import { useNavigate } from 'react-router-dom'
 import Spinner from './Spinner'
 
-interface JoinProps {
-  isLoading: boolean
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const Join = ({ isLoading, setIsLoading }: JoinProps) => {
+const Join = () => {
   const navigate = useNavigate()
   const usernameRef = useRef<HTMLInputElement>(null)
   const [roomId, setRoomId] = useState('')
   const [username, setUsername] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleJoin = () => {
     if (!roomId) return toast.error('Room ID is required')
     if (!username) return toast.error('Username is required')
     setIsLoading(true)
-    setGlobalUsername(username)
     joinSocket(roomId, username, navigate, () => setIsLoading(false))
   }
 
@@ -31,7 +26,6 @@ const Join = ({ isLoading, setIsLoading }: JoinProps) => {
         handleJoin()
       }}
     >
-      <Toaster />
       <h1 className='font-doto text-zinc-300 text-3xl'>Join a Room</h1>
       <input
         type='text'

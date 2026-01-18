@@ -1,12 +1,10 @@
-import React from 'react'
-
 type MessageBoxProps = {
   message: string
   author?: string
   isMe: boolean
 }
 
-const MessageBox: React.FC<MessageBoxProps> = ({ message, author, isMe }) => {
+const MessageBox = ({ message, author, isMe }: MessageBoxProps) => {
   return (
     <>
       <div

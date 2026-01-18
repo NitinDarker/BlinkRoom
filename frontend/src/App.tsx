@@ -2,10 +2,12 @@ import Dashboard from './pages/Dashboard'
 import Signup from './pages/Signup'
 import Landing from './pages/Landing'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
   return (
     <div>
+      <Toaster />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Landing />} />

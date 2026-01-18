@@ -5,10 +5,6 @@ let username: string | null = null;
 
 const serverUrl: string = "wss://blinkroom.onrender.com";
 
-export function setUsername(name: string) {
-  username = name;
-}
-
 export function getUsername() {
   return username;
 }
@@ -32,8 +28,6 @@ export function joinSocket(joinedRoomId: string, user: string, navigate: any, on
         payload: { roomId: joinedRoomId, username: user },
       })
     );
-    roomId = joinedRoomId;
-    username = user;
   };
 
   socket.onmessage = (event) => {
@@ -92,8 +86,6 @@ export function createSocket(
         payload: { roomId: joinedRoomId, username: user },
       })
     );
-    roomId = joinedRoomId;
-    username = user;
   };
 
   socket.onmessage = (event) => {
